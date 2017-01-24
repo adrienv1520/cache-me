@@ -3,19 +3,17 @@
 A file cache manager with streams and promises support.
 
 ### Exports:
-- get(name)         -> Promise({ confObj, rstream } or { confObj, rstream, err })
-- getSync(name)     -> Object(confObj)
-- set({ name, data, encoding, file (path= name), time= 1h, relatedData= {}, override= true })
-                    -> Promise(Confirmation message (String) or Error instance)
-- setParallel(see set args)
-                    -> callback(err)
-- hasSync(name)     -> Boolean
-- reset(name)       -> Promise(Confirmation message (String) or Error instance)
-- resetSync(name)   -> Boolean
-- delete(name)      -> Promise(Confirmation message (String) or Error instance)
-- deleteSync(name)  -> Boolean
-- clear()           -> Promise(Confirmation message (String) or Error instance)
-- clearSync()       -> Boolean
+- *get(name)* -> Promise({ confObj, rstream } or { confObj, rstream, err })
+- *getSync(name)* -> Object(confObj)
+- *set({ name, data, encoding, file (path= name), time= 1h, relatedData= {}, override= true })* -> Promise(Confirmation message (String) or Error instance)
+- *setParallel(see set args)* -> callback(err)
+- *hasSync(name)* -> Boolean
+- *reset(name)* -> Promise(Confirmation message (String) or Error instance)
+- *resetSync(name)* -> Boolean
+- *delete(name)* -> Promise(Confirmation message (String) or Error instance)
+- *deleteSync(name)* -> Boolean
+- *clear()* -> Promise(Confirmation message (String) or Error instance)
+- *clearSync()* -> Boolean
 
 ### How it works
 - stores data in 2 files :
