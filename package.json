@@ -4,9 +4,9 @@
   "description": "A file cache manager with streams and promises support",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --ignore-path test/",
+    "lint": "eslint index.js lib/",
     "pretest": "nsp check && npm run lint",
-    "test": "mocha test/*",
+    "test": "mocha test/*"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,9 @@
   ],
   "author": "Adrien Valcke",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "debug": "2.6.1"
+  },
   "devDependencies": {
     "chai": "3.4.1",
     "chai-as-promised": "6.0.0",

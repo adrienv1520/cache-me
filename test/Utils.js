@@ -1,6 +1,6 @@
 const { expect } = require('./common');
 const path = require('path');
-const Utils = require('../../cache/Utils');
+const Utils = require('../lib/Utils');
 const ReadStream = require('stream').Readable;
 
 const {
@@ -11,7 +11,7 @@ const {
   time,
 } = Utils;
 
-const fixtures = path.join(__dirname, '../fixtures');
+const fixtures = path.join(__dirname, 'fixtures');
 const goodJson = path.join(fixtures, 'good.json');
 const badJson = path.join(fixtures, 'bad.json');
 const phantom = '';

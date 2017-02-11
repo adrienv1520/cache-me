@@ -2,8 +2,8 @@ const { expect } = require('./common');
 const fs = require('fs');
 const path = require('path');
 
-const cacheLibDirectory = path.join(__dirname, '../');
-const filesDirectory = path.join(cacheLibDirectory, 'files');
+const cacheLibDirectory = path.join(__dirname, '../lib');
+const filesDirectory = path.join(__dirname, '../files');
 
 const cache = require(cacheLibDirectory);
 const Utils = require(path.join(cacheLibDirectory, 'Utils'));
