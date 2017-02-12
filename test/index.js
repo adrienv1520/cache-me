@@ -29,7 +29,6 @@ const obj = {
   name: 'test',
   data: '.test { color: red; }',
   encoding: 'utf8',
-  file: 'test.css',
   time: 1 * day,
   relatedData: 'related',
 };
@@ -42,7 +41,6 @@ const mayfly = {
   name: 'mayfly',
   data: 'ephemerid',
   encoding: 'base64',
-  file: 'may.fly',
   time: 2 * second,
   relatedData: 'related',
 };
@@ -53,7 +51,7 @@ const confObjBase = {
   data: obj.data,
   relatedData: obj.relatedData,
   file: {
-    path: path.join(filesDirectory, `${obj.name}${confExtension}_${obj.file}`),
+    path: path.join(filesDirectory, `${obj.name}${confExtension}_${obj.name}`),
     saved: true,
     encoding: obj.encoding,
   },
@@ -67,7 +65,7 @@ const confObjAlter = {
   data: 'other data',
   relatedData: 'other related data',
   file: {
-    path: path.join(filesDirectory, `${obj.name}${confExtension}_${obj.file}`),
+    path: path.join(filesDirectory, `${obj.name}${confExtension}_${obj.name}`),
     saved: true,
     encoding: obj.encoding,
   },
@@ -81,7 +79,7 @@ const confObjMayfly = {
   data: mayfly.data,
   relatedData: mayfly.relatedData,
   file: {
-    path: path.join(filesDirectory, `${mayfly.name}${confExtension}_${mayfly.file}`),
+    path: path.join(filesDirectory, `${mayfly.name}${confExtension}_${mayfly.name}`),
     saved: true,
     encoding: mayfly.encoding,
   },
@@ -271,7 +269,7 @@ describe('cache', function() {
             const files = fs.readdirSync(filesDirectory);
             expect(files).to.be.a('array').and.to.not.be.empty;
             expect(files).to.include(`${obj.name}${confExtension}`);
-            expect(files).to.include(`${obj.name}${confExtension}_${obj.file}`);
+            expect(files).to.include(`${obj.name}${confExtension}_${obj.name}`);
 
             const confObjInFile = getJSONSync(path.join(filesDirectory, `${obj.name}${confExtension}`));
             expect(confObjInFile).to.have.property('name', confObjBase.name);
@@ -280,7 +278,7 @@ describe('cache', function() {
             expect(confObjInFile).to.have.deep.property('file.path', confObjBase.file.path);
             expect(confObjInFile).to.have.deep.property('file.encoding', confObjBase.file.encoding);
 
-            const data = fs.readFileSync(path.join(filesDirectory, `${obj.name}${confExtension}_${obj.file}`));
+            const data = fs.readFileSync(path.join(filesDirectory, `${obj.name}${confExtension}_${obj.name}`));
             expect(data.toString()).to.equal(confObjBase.data);
 
             expect(confObj).to.exist.and.to.be.a('object');
@@ -330,9 +328,9 @@ describe('cache', function() {
           const files = fs.readdirSync(filesDirectory);
           expect(files).to.be.a('array').and.to.not.be.empty;
           expect(files).to.include(`${obj.name}${confExtension}`);
-          expect(files).to.include(`${obj.name}${confExtension}_${obj.file}`);
+          expect(files).to.include(`${obj.name}${confExtension}_${obj.name}`);
 
-          const data = fs.readFileSync(path.join(filesDirectory, `${obj.name}${confExtension}_${obj.file}`))
+          const data = fs.readFileSync(path.join(filesDirectory, `${obj.name}${confExtension}_${obj.name}`))
           expect(data.toString()).to.equal(obj.data);
 
           expect(confObj).to.exist.and.to.be.a('object');
@@ -714,7 +712,7 @@ describe('cache', function() {
 
         expect(files.length).to.equal(4);
         expect(files).to.contain(`${obj.name}${confExtension}`);
-        expect(files).to.contain(`${obj.name}${confExtension}_${obj.file}`);
+        expect(files).to.contain(`${obj.name}${confExtension}_${obj.name}`);
 
         cache.delete(obj.name)
         .then(() => {
@@ -722,7 +720,7 @@ describe('cache', function() {
 
           expect(files.length).to.equal(2);
           expect(files).to.not.contain(`${obj.name}${confExtension}`);
-          expect(files).to.not.contain(`${obj.name}${confExtension}_${obj.file}`);
+          expect(files).to.not.contain(`${obj.name}${confExtension}_${obj.name}`);
 
           done();
         })
@@ -760,7 +758,7 @@ describe('cache', function() {
         const filesBeforeDelete = fs.readdirSync(filesDirectory);
         expect(filesBeforeDelete.length).to.equal(4);
         expect(filesBeforeDelete).to.contain(`${obj.name}${confExtension}`);
-        expect(filesBeforeDelete).to.contain(`${obj.name}${confExtension}_${obj.file}`);
+        expect(filesBeforeDelete).to.contain(`${obj.name}${confExtension}_${obj.name}`);
 
         const hasBeenDeleted = cache.deleteSync(obj.name);
         const filesAfterDelete = fs.readdirSync(filesDirectory);
@@ -768,7 +766,7 @@ describe('cache', function() {
         expect(hasBeenDeleted).to.be.true;
         expect(filesAfterDelete.length).to.equal(2);
         expect(filesAfterDelete).to.not.contain(`${obj.name}${confExtension}`);
-        expect(filesAfterDelete).to.not.contain(`${obj.name}${confExtension}_${obj.file}`);
+        expect(filesAfterDelete).to.not.contain(`${obj.name}${confExtension}_${obj.name}`);
       });
 
       after(function() {
@@ -924,7 +922,7 @@ describe('cache', function() {
               const files = fs.readdirSync(filesDirectory);
               expect(files).to.be.a('array').and.to.not.be.empty;
               expect(files).to.include(`${obj.name}${confExtension}`);
-              expect(files).to.include(`${obj.name}${confExtension}_${obj.file}`);
+              expect(files).to.include(`${obj.name}${confExtension}_${obj.name}`);
 
               const confObjInFile = getJSONSync(path.join(filesDirectory, `${obj.name}${confExtension}`));
               expect(confObjInFile).to.have.property('name', confObjBase.name);
@@ -933,7 +931,7 @@ describe('cache', function() {
               expect(confObjInFile).to.have.deep.property('file.path', confObjBase.file.path);
               expect(confObjInFile).to.have.deep.property('file.encoding', confObjBase.file.encoding);
 
-              const data = fs.readFileSync(path.join(filesDirectory, `${obj.name}${confExtension}_${obj.file}`));
+              const data = fs.readFileSync(path.join(filesDirectory, `${obj.name}${confExtension}_${obj.name}`));
               expect(data.toString()).to.equal(confObjBase.data);
 
               expect(confObj).to.exist.and.to.be.a('object');
@@ -995,9 +993,9 @@ describe('cache', function() {
             const files = fs.readdirSync(filesDirectory);
             expect(files).to.be.a('array').and.to.not.be.empty;
             expect(files).to.include(`${obj.name}${confExtension}`);
-            expect(files).to.include(`${obj.name}${confExtension}_${obj.file}`);
+            expect(files).to.include(`${obj.name}${confExtension}_${obj.name}`);
 
-            const data = fs.readFileSync(path.join(filesDirectory, `${obj.name}${confExtension}_${obj.file}`))
+            const data = fs.readFileSync(path.join(filesDirectory, `${obj.name}${confExtension}_${obj.name}`))
             expect(data.toString()).to.equal(obj.data);
 
             expect(confObj).to.exist.and.to.be.a('object');
