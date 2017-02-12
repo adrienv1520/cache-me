@@ -219,7 +219,7 @@ Params:
 Returns:
   - \<Boolean\>: true if reseted, false if not
 
-####delete(name)
+###delete(name)
 Definitely delete data in cache (data file and conf file). *Asynchronous*
 
 Params:
