@@ -37,7 +37,7 @@ const cache = require('cache-me');
 Get the data in cache from the data file as a Readable stream. If the data set is in cache but has expired it will reject with an object and an err.code = 'EXPIRED'. *Asynchronous*
 
 Params:
-  - name: the name of the object in cache
+  - name \<String\>: the name of the object in cache
 
 Returns:
   - Promise:
@@ -66,7 +66,7 @@ Example:
 Get all properties of the 'name' configuration object. *Synchronous*
 
 Params:
-  - name <String>: the name of the object in cache
+  - name \<String\>: the name of the object in cache
 
 Returns:
   - confObj <Object> or {} if nothing found
