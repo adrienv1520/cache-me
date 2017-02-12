@@ -2,10 +2,10 @@
 
 A file cache manager with streams and promises support.
 
-### Installation
+## Installation
 `npm i -S cache-me`
 
-### How it works
+## How it works
 - stores data in 2 files :
   - a JSON conf file with this structure :
     {
@@ -28,12 +28,12 @@ A file cache manager with streams and promises support.
 - time are in milliseconds
 - logs are made via the *debug* module to avoid synchronous *console* logs
 
-### How to use it:
+## How to use it:
 ```javascript
 const cache = require('cache-me');
 ```
 
-####get(name)
+###get(name)
 Get the data in cache from the data file as a Readable stream. If the data set is in cache but has expired it will reject with an object and an err.code = 'EXPIRED'. *Asynchronous*
 
 Params:
@@ -62,7 +62,7 @@ Example:
     });
   ```
 
-####getSync(name)
+###getSync(name)
 Get all properties of the 'name' configuration object. *Synchronous*
 
 Params:
@@ -79,7 +79,7 @@ Example:
   const { data, lastModified, expires } = cache.getSync('xml');
   ```
 
-####set({ name, data, encoding = 'utf8', time = 1h, relatedData = {}, override = true })
+###set({ name, data, encoding = 'utf8', time = 1h, relatedData = {}, override = true })
 Set data in cache, a conf file and a data file will be created. To set an image in cache set data with a binary buffer. *Asynchronous*
 
 Params:
@@ -118,7 +118,7 @@ Example:
     });
   ```
 
-####setParallel(object, callback)
+###setParallel(object, callback)
 Same as **cache.set** method but set data in cache in parallel. A conf file and a data file will be created with streams so it is not unsafe to make multiple call to setParallel or to wait until the object has successfully been cached. *Asynchronous*
 
 Params:
@@ -167,7 +167,7 @@ Example:
   });
   ```
 
-####hasSync(name)
+###hasSync(name)
 Test if data are in cache or not, taking into account expires time. *Synchronous*
 
 Params:
@@ -176,7 +176,7 @@ Params:
 Returns:
   - \<Boolean\>: true if the object is in cache, false if not or has expired.
 
-####reset(name)
+###reset(name)
 Reset expire time by setting the new one running from now with the original cache time set. *Asynchronous*
 
 Params:
@@ -210,7 +210,7 @@ Example:
     });
   ```
 
-####resetSync(name)
+###resetSync(name)
 Reset expire time by setting the new one running from now with the original cache time set. *Synchronous*
 
 Params:
@@ -240,7 +240,7 @@ Example:
     .catch(err => debug(err));
   ```
 
-####deleteSync(name)
+###deleteSync(name)
 Definitely delete data in cache (data file and conf file). *Synchronous*
 
 Params:
@@ -249,7 +249,7 @@ Params:
 Returns:
   - \<Boolean\>: true if deleted, false if not
 
-####clear()
+###clear()
 Definitely clear all data in cache (data files and conf files). *Asynchronous*
 
 Params:
@@ -270,7 +270,7 @@ Example:
     .catch(err => debug(err));
   ```
 
-####clearSync()
+###clearSync()
 Definitely clear all data in cache (data files and conf files). *Synchronous*
 
 Params:
