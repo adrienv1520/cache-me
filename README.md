@@ -41,8 +41,8 @@ Params:
 
 Returns:
   - Promise:
-    - resolve with { confObj <Object>, rstream <Readable Stream> }
-    - reject with { err <Error>, confObj <Object>, rstream <Readable Stream> }
+    - resolve with { confObj \<Object\>, rstream \<Readable Stream\> }
+    - reject with { err \<Error\>, confObj \<Object\>, rstream \<Readable Stream\> }
 
 Example:
   ```javascript
@@ -69,7 +69,7 @@ Params:
   - name \<String\>: the name of the object in cache
 
 Returns:
-  - confObj <Object> or {} if nothing found
+  - confObj \<Object\> or {} if nothing found
 
 Example:
   ```javascript
@@ -83,17 +83,17 @@ Example:
 Set data in cache, a conf file and a data file will be created. To set an image in cache set data with a binary buffer. *Asynchronous*
 
 Params:
-  - name <String>: the name of the object to cache
-  - data <Object>: the data that will be saved in the data file and get via rstream
-  - encoding <String> (optional): the encoding, one of those supported by Node.js, **utf8** by default
-  - time <Number> (optional): the time **in milliseconds** to keep data in cache, >= 1 second and <= 365 days, **1 hour** by default.
-  - relatedData <Object> (optional): the related data that may have been used to construct data, **{}** by default.
-  - override <Boolean> (optional): true to override a previous object in cache, false if not. Throw 'EEXIST' error code if *override* was set to *false*. **true** by default.
+  - name \<String\>: the name of the object to cache
+  - data \<Object\>: the data that will be saved in the data file and get via rstream
+  - encoding \<String\> (optional): the encoding, one of those supported by Node.js, **utf8** by default
+  - time \<Number\> (optional): the time **in milliseconds** to keep data in cache, >= 1 second and <= 365 days, **1 hour** by default.
+  - relatedData \<Object\> (optional): the related data that may have been used to construct data, **{}** by default.
+  - override \<Boolean\> (optional): true to override a previous object in cache, false if not. Throw 'EEXIST' error code if *override* was set to *false*. **true** by default.
 
 Returns:
   - Promise:
-    - resolve with a confirmation message <String>
-    - reject with an error <Error>
+    - resolve with a confirmation message \<String\>
+    - reject with an error \<Error\>
 
 Example:
   ```javascript
@@ -122,12 +122,12 @@ Example:
 Same as **cache.set** method but set data in cache in parallel. A conf file and a data file will be created with streams so it is not unsafe to make multiple call to setParallel or to wait until the object has successfully been cached. *Asynchronous*
 
 Params:
-  - object <Object>: the same object as in **cache.set** method
+  - object \<Object\>: the same object as in **cache.set** method
 
 Returns:
-  - callback(err, confObj) <Function>:
-    - err <Error>: an error instance, streams return 'EEXIST' error code if override is set to false and the object with the same name is already in cache
-    - confObj <Object>: the configuration object saved in cache
+  - callback(err, confObj) \<Function\>:
+    - err \<Error\>: an error instance, streams return 'EEXIST' error code if override is set to false and the object with the same name is already in cache
+    - confObj \<Object\>: the configuration object saved in cache
 
 Example:
   ```javascript
@@ -171,21 +171,21 @@ Example:
 Test if data are in cache or not, taking into account expires time. *Synchronous*
 
 Params:
-  - name <String>: the name of the object in cache
+  - name \<String\>: the name of the object in cache
 
 Returns:
-  - <Boolean>: true if the object is in cache, false if not or has expired.
+  - \<Boolean\>: true if the object is in cache, false if not or has expired.
 
 ####reset(name)
 Reset expire time by setting the new one running from now with the original cache time set. *Asynchronous*
 
 Params:
-  - name <String>: the name of the object in cache
+  - name \<String\>: the name of the object in cache
 
 Returns:
   - Promise:
-    - resolve with a confirmation message <String>
-    - reject with an error <Error>
+    - resolve with a confirmation message \<String\>
+    - reject with an error \<Error\>
 
 Example:
   ```javascript
@@ -214,21 +214,21 @@ Example:
 Reset expire time by setting the new one running from now with the original cache time set. *Synchronous*
 
 Params:
-  - name <String>: the name of the object in cache
+  - name \<String\>: the name of the object in cache
 
 Returns:
-  - <Boolean>: true if reseted, false if not
+  - \<Boolean\>: true if reseted, false if not
 
 ####delete(name)
 Definitely delete data in cache (data file and conf file). *Asynchronous*
 
 Params:
-  - name <String>: the name of the object in cache
+  - name \<String\>: the name of the object in cache
 
 Returns:
   - Promise:
-    - resolve with a confirmation message <String>
-    - reject with an error <Error> if one of the two files is not in cache
+    - resolve with a confirmation message \<String\>
+    - reject with an error \<Error\> if one of the two files is not in cache
 
 Example:
   ```javascript
@@ -244,10 +244,10 @@ Example:
 Definitely delete data in cache (data file and conf file). *Synchronous*
 
 Params:
-  - name <String>: the name of the object in cache
+  - name \<String\>: the name of the object in cache
 
 Returns:
-  - <Boolean>: true if deleted, false if not
+  - \<Boolean\>: true if deleted, false if not
 
 ####clear()
 Definitely clear all data in cache (data files and conf files). *Asynchronous*
@@ -257,8 +257,8 @@ Params:
 
 Returns:
   - Promise:
-    - resolve with a confirmation message <String>
-    - reject with an error <Error>
+    - resolve with a confirmation message \<String\>
+    - reject with an error \<Error\>
 
 Example:
   ```javascript
@@ -277,7 +277,7 @@ Params:
   - no params
 
 Returns:
-  - <Boolean>: true if cleared, false if not
+  - \<Boolean\>: true if cleared, false if not
 
 
 ## Licence
